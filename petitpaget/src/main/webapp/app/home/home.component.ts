@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     videoLocation: string;
     playlist: string[];
     displayVideo: boolean;
-
+    isLoading: boolean;
     constructor(
         private principal: Principal,
         private loginModalService: LoginModalService,
@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
         private videoGenService: VideoGenService
     ) {
         this.displayVideo = false;
+        this.isLoading = false;
     }
 
     getFiles() {
@@ -42,7 +43,6 @@ export class HomeComponent implements OnInit {
             this.loadingString = null;
         });
     }
-
     loadModel() {
         console.log(this.videoGen);
         this.loadingString = 'Loading Model';
@@ -94,8 +94,10 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.principal.identity().then((account) => {
             this.account = account;
+            this.isLoading = true ;
         });
         this.registerAuthenticationSuccess();
+
     }
 
     registerAuthenticationSuccess() {
