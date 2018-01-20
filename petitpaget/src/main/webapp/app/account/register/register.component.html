@@ -53,13 +53,10 @@
                 <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary">Register</button>
             </form>
             <p></p>
-            <div class="alert alert-warning">
+            <div class="sign_option_italic">
                 <span>If you want to </span>
                 <a class="alert-link" (click)="openLogin()">sign in</a>
-                <span>, you can try the default accounts:
-                <br/>
-                - User (login="user" and password="user").</span>
-                <!--<br/>- Administrator (login="admin" and password="admin") <br/>-->
+                <span>, you can try the default accounts: <br/>- User (login=<a class="alert-link" (click)="openLogin()">"user"</a> and password=<a class="alert-link" (click)="openLogin()">"user"</a>).</span>
             </div>
         </div>
     </div>
