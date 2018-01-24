@@ -36,7 +36,7 @@
                         <!-- ######################################### -->
                         <!-- ######################################### -->
                         <!-- ######################################### -->
-                        <img height="200" src="../../content/images/bref_background.png" class="image_bref_penseur" />
+                        <img height="300" src="../../content/images/bref_background.png" />
                         <div class="sign_in">
                             <a class="alert-link" (click)="login()">Sign <u>Here</u></a><br>
                         </div>
@@ -75,37 +75,35 @@
                 <!-- ######################################### -->
                 <!-- ######################################### -->
                 <!-- ######################################### -->
-                <img height="200" src="../../content/images/bref_background.png" />
+                <img height="300" src="../../content/images/bref_background.png" />
             </div>
 
             <!-- ######################################### -->
             <!-- Select ################################## -->
             <!-- ######################################### -->
             <div class="select_gram">
-                Select a Grammar
-                <select class="select_gram" [(ngModel)]="videoGen" (change)="loadModel()">
+                Select Grammar
+                <select class="select_gram_button" [(ngModel)]="videoGen" (change)="loadModel()">
                     <option *ngFor="let file of listFiles" [value]="file">{{file}}</option>
                 </select>
             </div>
-            <div class="image_bref_penseur" *ngIf="isLoading" style="color: red" (suspend)="loadingString">{{loadingString}}</div><!---->
-
+            <div class="image_bref_penseur" *ngIf="isLoading" style="color: red" (suspend)="loadingString">{{loadingString}}</div>
             <!-- ######################################### -->
             <!-- ######################################### -->
             <!-- ######################################### -->
 
-
-                       <!-- <div class="loadVideos">
-                            <select [(ngModel)]="videoGen" (change)="loadModel()">
-                                <option *ngFor="let file of listFiles" [value]="file">{{file}}</option>
-                            </select>
-                            <button *ngIf="videoGenModel" (click)="generateRandomVariant()">Random</button>
-                        </div>-->
+            <div class = "preload"></div>
+            <div>
+                <video *ngIf="displayVideo" preload="auto" controls autoplay>
+                    <source src="{{ videoLocation }}" type="video/mp4">
+                </video>
+            </div>
         </div>
-        <div class="if_videoGenModel" >
-            <div *ngIf="videoGenModel">
+
+        <div class="if_videoGenModel" *ngIf="videoGenModel" >
                 <div class = "select_gram">
-                          <u style="color:#FF0000;"> Unselected</u> <br><u style="color:#008000;">Selected</u> <br><u style="color:#FFA500;">Mandatory</u><br>
-                        To generate video, click on Button Generate video bellow
+                          <u style="color:#FF0000;"> Unselected</u> <u style="color:#008000;">Selected</u> <u style="color:#FFA500;">Mandatory</u><br>
+                        To generate video, click on buttons bellow
                 </div>
                 <table align="center">
                     <tr *ngFor="let media of videoGenModel.medias">
@@ -142,8 +140,10 @@
                         </td>
                     </tr>
                 </table>
-                <button (click)="generateVideo()">Generate Video</button>
-            </div>
+                <div class="select_gram">
+                    <button (click)="generateVideo()">Generate Video</button>
+                    <button *ngIf="videoGenModel" (click)="generateRandomVariant()">Random</button>
+                </div>
         </div>
         <!-- ######################################### --
         <!-- ######################################### -->
