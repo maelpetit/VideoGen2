@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
     }
     loadModel() {
         console.log(this.videoGen);
+
         this.loadingString = 'Loading Model';
         this.videoGenService.getModel(this.videoGen).subscribe((model) => {
             this.videoGenModel = model;
